@@ -72,7 +72,7 @@ public class DeptEmp {
     }
 
     @ManyToOne
-    @JoinColumn(name = "emp_no", referencedColumnName = "emp_no", nullable = false)
+    @JoinColumn(name = "emp_no", referencedColumnName = "emp_no", nullable = false, insertable = false, updatable = false)
     public Employees getEmployeesByEmpNo() {
         return employeesByEmpNo;
     }
@@ -82,7 +82,7 @@ public class DeptEmp {
     }
 
     @ManyToOne
-    @JoinColumn(name = "dept_no", referencedColumnName = "dept_no", nullable = false)
+    @JoinColumn(name = "dept_no", referencedColumnName = "dept_no", nullable = false, insertable = false, updatable = false)
     public Departments getDepartmentsByDeptNo() {
         return departmentsByDeptNo;
     }

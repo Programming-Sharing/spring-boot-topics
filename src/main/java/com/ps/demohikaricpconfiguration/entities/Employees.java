@@ -11,7 +11,7 @@ public class Employees {
     private Date birthDate;
     private String firstName;
     private String lastName;
-    private Object gender;
+    private String gender;
     private Date hireDate;
     private Collection<DeptEmp> deptEmpsByEmpNo;
     private Collection<DeptManager> deptManagersByEmpNo;
@@ -60,11 +60,11 @@ public class Employees {
 
     @Basic
     @Column(name = "gender", nullable = false)
-    public Object getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Object gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

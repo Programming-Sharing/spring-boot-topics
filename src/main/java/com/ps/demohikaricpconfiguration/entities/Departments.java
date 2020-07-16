@@ -1,5 +1,7 @@
 package com.ps.demohikaricpconfiguration.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -45,7 +47,8 @@ public class Departments {
         return Objects.hash(deptNo, deptName);
     }
 
-    @OneToMany(mappedBy = "departmentsByDeptNo")
+    @JsonIgnore
+    @OneToMany(mappedBy = "departmentsByDeptNo", fetch = FetchType.LAZY)
     public Collection<DeptEmp> getDeptEmpsByDeptNo() {
         return deptEmpsByDeptNo;
     }
@@ -54,7 +57,8 @@ public class Departments {
         this.deptEmpsByDeptNo = deptEmpsByDeptNo;
     }
 
-    @OneToMany(mappedBy = "departmentsByDeptNo")
+    @JsonIgnore
+    @OneToMany(mappedBy = "departmentsByDeptNo" , fetch = FetchType.LAZY)
     public Collection<DeptManager> getDeptManagersByDeptNo() {
         return deptManagersByDeptNo;
     }

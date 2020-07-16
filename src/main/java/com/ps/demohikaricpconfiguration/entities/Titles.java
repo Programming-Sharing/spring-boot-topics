@@ -70,7 +70,7 @@ public class Titles {
     }
 
     @ManyToOne
-    @JoinColumn(name = "emp_no", referencedColumnName = "emp_no", nullable = false)
+    @JoinColumn(name = "emp_no", referencedColumnName = "emp_no", nullable = false , insertable = false, updatable = false)
     public Employees getEmployeesByEmpNo() {
         return employeesByEmpNo;
     }
