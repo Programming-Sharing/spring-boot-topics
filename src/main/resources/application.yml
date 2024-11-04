@@ -3,12 +3,8 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres_usr
     url: jdbc:postgresql://localhost:5432/postgres
-    password: jdbc:postgresql://localhost:5432/postgres
+    password: postgres_usr
     name: spring_quartz_demo
-  jpa:
-    hibernate:
-      ddl-auto: none
-    database-platform:
   quartz:
     job-store-type: jdbc
     jdbc:
@@ -21,14 +17,14 @@ spring:
             #instanceName: clusteredScheduler #quartzScheduler
           jobStore:
             class: org.springframework.scheduling.quartz.LocalDataSourceJobStore
-#            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate #We only make database-specific proxies for databases
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
             useProperties: false #Indicates that JDBC JobStore stores all values in JobDataMaps as strings, so more complex objects can be stored as name-value pairs rather than serialized in BLOB columns.In the long run, this is safer because you avoid serializing non-String classes to BLOB class versions.
-            tablePrefix: QUARTZ_  #Database Table Prefix
+            tablePrefix: QRTZ_  #Database Table Prefix
             misfireThreshold: 60000 #The number of milliseconds the dispatcher will "tolerate" a Trigger to pass its next startup time before being considered a "fire".The default value (if you do not enter this property in the configuration) is 60000 (60 seconds).
             clusterCheckinInterval: 5000 #Set the frequency (in milliseconds) of this instance'checkin'* with other instances of the cluster.Affects the speed of detecting failed instances.
             isClustered: true #Turn on Clustering
           threadPool: #Connection Pool
             class: org.quartz.simpl.SimpleThreadPool
-            threadCount: 10
+            threadCount: 3
             threadPriority: 5
             threadsInheritContextClassLoaderOfInitializingThread: true

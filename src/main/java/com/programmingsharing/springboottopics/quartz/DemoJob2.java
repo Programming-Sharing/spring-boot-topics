@@ -8,14 +8,14 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
 import java.time.Instant;
 
 @DisallowConcurrentExecution
-public class DemoJob extends QuartzJobBean {
+public class DemoJob2 extends QuartzJobBean {
     @Override
     protected void executeInternal(JobExecutionContext context) {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
         System.out.println(this.getClass().getName() + " job run at: " + Instant.now().toString());
     }
 }
